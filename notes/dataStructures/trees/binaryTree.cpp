@@ -92,12 +92,38 @@ void insertNode(dataType data)
 
 // -----function to search a given element in the binary tree-----
 //note: the order of search operation in a binary tree is O(log n)
+template <typename dataType>
+void binarySearch(Node<dataType> *rootPointer, dataType keyElement)
+{
+    if (rootPointer == null)
+    {
+        cout << keyElement << " not found";
+        return;
+    }
+
+    if (keyElement == rootPointer->data)
+    {
+        cout << "found " << keyElement;
+        return;
+    }
+    if (keyElement < rootPointer->data)
+    {
+        binarySearch<dataType>(rootPointer->left, keyElement);
+    }
+    else
+    {
+        binarySearch<dataType>(rootPointer->right, keyElement);
+    }
+}
 
 int main()
 {
     for (int i = 0; i < 20; i++) //adding the data to the tree
     {
         insertNode<int>(i);
-        cout << "added " << i << endl;
+        cout << i << " -> ";
     }
+    cout << "null\n";
+
+    binarySearch<int>(root, 27);
 }
