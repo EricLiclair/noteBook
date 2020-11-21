@@ -30,6 +30,7 @@ traversing in in-order
 
 using namespace std;
 
+//defining the structure
 template <typename dataType>
 struct Node
 {
@@ -116,14 +117,55 @@ void binarySearch(Node<dataType> *rootPointer, dataType keyElement)
     }
 }
 
+//-----preOrder traversal-----
+template <typename dataType>
+void preOrder(Node<dataType> *ptr)
+{
+    cout << ptr->data << " -> ";
+    if (ptr->left != null)
+        preOrder(ptr->left);
+    if (ptr->right != null)
+        preOrder(ptr->right);
+}
+
+//-----postOrder traversal-----
+template <typename dataType>
+void postOrder(Node<dataType> *ptr)
+{
+    if (ptr->left != null)
+        postOrder(ptr->left);
+    if (ptr->right != null)
+        postOrder(ptr->right);
+    cout << ptr->data << " -> ";
+}
+
+//-----inOrder traversal-----
+template <typename dataType>
+void inOrder(Node<dataType> *ptr)
+{
+    if (ptr->left != null)
+        inOrder(ptr->left);
+    cout << ptr->data << " -> ";
+    if (ptr->right != null)
+        inOrder(ptr->right);
+}
+
 int main()
 {
-    for (int i = 0; i < 20; i++) //adding the data to the tree
+    int a[] = {1, 2, 5, 3, 4, 6};
+    for (int i = 0; i < 6; i++) //adding the data to the tree
     {
-        insertNode<int>(i);
-        cout << i << " -> ";
+        insertNode<int>(a[i]);
+        cout << a[i] << " -> ";
     }
     cout << "null\n";
 
-    binarySearch<int>(root, 27);
+    binarySearch<int>(root, 6);
+
+    cout << "\nPre Order traversal ";
+    preOrder(root);
+    cout << "\nPost Order traversal ";
+    postOrder(root);
+    cout << "\nIn Order traversal ";
+    inOrder(root);
 }
