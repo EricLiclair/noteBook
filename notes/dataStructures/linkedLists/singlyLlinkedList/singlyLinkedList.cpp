@@ -5,13 +5,13 @@
 using namespace std;
 
 // creating a structure (a data of type `node`)
-template <typename T>
+template <typename dataType>
 struct Node
 {
-    T data;     //data element of the node
-    Node *next; //pointer to the next node
+    dataType data; //data element of the node
+    Node *next;    //pointer to the next node
 
-    Node(T data) //constructor to initialise or update the data element
+    Node(dataType data) //constructor to initialise or update the data element
     {
         this->data = data;
     }
@@ -19,7 +19,48 @@ struct Node
 
 Node<int> *head = null; //initialising the head pointer
 
+// function to add element at the start of the list
+template <typename dataType>
+void addElementAtHead(dataType data)
+{
+    Node<dataType> *newNode = new Node<dataType>(data);
+
+    if (head == null)
+        head = newNode;
+    else
+    {
+        newNode->next = head;
+        head = newNode;
+    }
+}
+
+// function to search and element in the list
+template <typename dataType>
+bool searchElement(Node<dataType> *head, dataType keyElement)
+{
+    Node<dataType> *ptr = head;
+    while (ptr != null)
+    {
+        if (ptr->data == keyElement)
+        {
+            cout << "Element Found\n";
+            return true;
+        }
+        ptr = ptr->next;
+    }
+
+    cout << "Element NOT found!\n";
+    return false;
+}
+
 int main()
 {
-    return 0;
+    for (int i = 0; i < 10; i++)
+    {
+        addElementAtHead(i);
+        cout << i << " -> ";
+    }
+    cout << "null\n";
+
+    searchElement(head, 19);
 }

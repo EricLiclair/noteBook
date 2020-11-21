@@ -8,19 +8,19 @@ must have a value greater than its parent value.
 
 -----Binary Search Tree basic operations-----
 
-Insert:
+1. Insert:
 insert an element in the tree / create a tree
 
-Search:
+2. Search:
 search an element in the tree
 
-PreOrder traversal:
+3. PreOrder traversal:
 traversing in pre-order
 
-PostOrder traversal:
+4. PostOrder traversal:
 traversing in post-order
 
-InOrder traversal:
+5. InOrder traversal:
 traversing in in-order
 
 */
